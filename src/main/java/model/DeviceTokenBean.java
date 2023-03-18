@@ -1,12 +1,15 @@
 package model;
 
 
+import lombok.NoArgsConstructor;
 
+@NoArgsConstructor
 public class DeviceTokenBean  {
     private String userId;
     private String deviceType;
     private String module;
     private String token;
+    private DDL ddl;
 
     public DeviceTokenBean(String deviceType) {
         this.deviceType = deviceType;
@@ -44,6 +47,14 @@ public class DeviceTokenBean  {
         this.token = token;
     }
 
+    public DDL getDdl() {
+        return ddl;
+    }
+
+    public void setDdl(DDL ddl) {
+        this.ddl = ddl;
+    }
+
     @Override
     public String toString() {
         return "DeviceTokenBean{" +
@@ -51,6 +62,7 @@ public class DeviceTokenBean  {
                 ", deviceType='" + deviceType + '\'' +
                 ", module='" + module + '\'' +
                 ", token='" + token + '\'' +
+                ", ddl=" + ddl +
                 '}';
     }
 }

@@ -1,7 +1,9 @@
 package model;
 
-import java.util.UUID;
+import lombok.NoArgsConstructor;
 
+import java.util.UUID;
+@NoArgsConstructor
 public class DDL {
     private String id,textEn,textBn;
 
