@@ -3,13 +3,17 @@ import model.DDL;
 import model.DeviceTokenBean;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
+import time.TimeUtils;
 
 import java.lang.reflect.Field;
+import java.time.Instant;
 import java.time.LocalDate;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
+
+import static regularExpression.Rx.*;
 
 public class Main {
     static ModelMapper modelMapper;
@@ -20,7 +24,7 @@ public class Main {
         modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
     }
 
-    private static final String PERSON_NAME_REX = "^[a-zA-Z]+(([',. --'][a-zA-Z ])?[a-zA-Z]*)*$";
+
     private static final List<DDL> ddlList = new ArrayList<>();
 
     public static void main(String[] args) {
@@ -64,6 +68,25 @@ public class Main {
 
         System.out.println(map.toString());
 
+        textLocalDataRx("2021-02-15");
+
+//        String ss = null;
+//
+//        if(ss == null){
+//            ss = "";
+//        }
+//        String s = Instant.now().toString();
+//        System.out.println(s);
+//
+//        String di = "15";
+//
+//        System.out.println(di.matches(RX_FOR_IS_DIGIT));
+        Date date = new Date();
+        boolean isBoo = TimeUtils.isTimeIntervalOver(date,2);
+
+        System.out.println(isBoo);
+
+
 
 
     }
@@ -95,5 +118,15 @@ public class Main {
                 new DDL("Khulna", "khul")
         ));
     }
+
+    private static void textLocalDataRx(String dateString){
+        if (dateString.matches(RX_FOR_LOCAL_DATE)) {
+            LocalDate date = LocalDate.parse(dateString);
+            System.out.println(date);
+        }else {
+            System.out.println("Date not a local date format");
+        }
+    }
+
 
 }
