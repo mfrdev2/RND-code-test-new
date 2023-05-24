@@ -1,3 +1,4 @@
+import enumUtils.DeviceType;
 import factor.Factor;
 import model.DDL;
 import model.DeviceTokenBean;
@@ -84,7 +85,14 @@ public class Main {
         Date date = new Date();
         boolean isBoo = TimeUtils.isTimeIntervalOver(date,2);
 
+        String s = " ";
+        String w = "";
+
+        System.out.println(Objects.equals(s,w));
+
         System.out.println(isBoo);
+
+        System.out.println(DeviceType.WEB);
 
 
 
