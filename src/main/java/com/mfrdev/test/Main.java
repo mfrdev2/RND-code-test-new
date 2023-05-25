@@ -1,20 +1,22 @@
-import enumUtils.DeviceType;
-import factor.Factor;
-import model.DDL;
-import model.DeviceTokenBean;
+package com.mfrdev.test;
+
+import com.mfrdev.test.enumUtils.DeviceType;
+import com.mfrdev.test.factor.Factor;
+import com.mfrdev.test.model.DDL;
+import com.mfrdev.test.model.DeviceTokenBean;
+import com.mfrdev.test.regularExpression.Rx;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
-import time.TimeUtils;
+import com.mfrdev.test.time.TimeUtils;
 
 import java.lang.reflect.Field;
-import java.time.Instant;
 import java.time.LocalDate;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-import static regularExpression.Rx.*;
+import static com.mfrdev.test.regularExpression.Rx.*;
 
 public class Main {
     static ModelMapper modelMapper;
@@ -43,7 +45,7 @@ public class Main {
 
         String name = "report";
 
-        Pattern pattern = Pattern.compile(PERSON_NAME_REX);
+        Pattern pattern = Pattern.compile(Rx.PERSON_NAME_REX);
 
         Matcher matcher = pattern.matcher(name);
         boolean matches = matcher.matches();
@@ -128,7 +130,7 @@ public class Main {
     }
 
     private static void textLocalDataRx(String dateString){
-        if (dateString.matches(RX_FOR_LOCAL_DATE)) {
+        if (dateString.matches(Rx.RX_FOR_LOCAL_DATE)) {
             LocalDate date = LocalDate.parse(dateString);
             System.out.println(date);
         }else {

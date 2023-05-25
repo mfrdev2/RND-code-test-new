@@ -1,4 +1,4 @@
-package time;
+package com.mfrdev.test.time;
 
 import java.util.Date;
 

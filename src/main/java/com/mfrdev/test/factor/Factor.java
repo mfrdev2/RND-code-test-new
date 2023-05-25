@@ -1,4 +1,4 @@
-package factor;
+package com.mfrdev.test.factor;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;

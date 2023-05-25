@@ -1,4 +1,4 @@
-package regularExpression;
+package com.mfrdev.test.regularExpression;
 
 public class Rx {
     public static final String RX_FOR_LOCAL_DATE = "\\d{4}-\\d{2}-\\d{2}";

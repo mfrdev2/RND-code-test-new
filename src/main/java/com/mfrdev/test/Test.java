@@ -1,4 +1,6 @@
-import model.DeviceTokenBean;
+package com.mfrdev.test;
+
+import com.mfrdev.test.model.DeviceTokenBean;
 
 import java.util.Arrays;
 import java.util.List;

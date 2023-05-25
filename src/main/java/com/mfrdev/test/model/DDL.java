@@ -1,4 +1,4 @@
-package model;
+package com.mfrdev.test.model;
 
 import lombok.NoArgsConstructor;
 
