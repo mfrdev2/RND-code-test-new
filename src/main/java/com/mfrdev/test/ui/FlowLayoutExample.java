@@ -2,6 +2,8 @@ package com.mfrdev.test.ui;
 
 // import statements
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.*;
 
 public class FlowLayoutExample
@@ -18,15 +20,15 @@ public class FlowLayoutExample
         // creating the buttons
         JButton b1 = new JButton("1");
         b1.setSize(new Dimension(30,30));
-        JLabel b2 = new JLabel("This will be a header text slslslsls slsl slslks slsd s");
-        b2.setVerticalAlignment(JLabel.CENTER);
+        final JLabel[] b2 = {new JLabel("This will be a header text slslslsls slsl slslks slsd s")};
+        b2[0].setVerticalAlignment(JLabel.CENTER);
         double width = frameObj.getSize().getWidth();
         double b1Width = b1.getSize().getWidth();
         System.out.println("FrameWidth :: "+width);
         System.out.println("B1Width :: "+b1Width);
         int ss = (int) (width - b1Width);
         System.out.println(ss);
-        b2.setPreferredSize(new Dimension((int) ((int)ss*0.9),20));
+        b2[0].setPreferredSize(new Dimension((int) ((int)ss*0.9),20));
         JButton b3 = new JButton("3");
         JButton b4 = new JButton("4");
         JButton b5 = new JButton("5");
@@ -39,7 +41,7 @@ public class FlowLayoutExample
 
         // adding the buttons to frame
         frameObj.add(b1);
-        frameObj.add(b2,0);
+     //   frameObj.add(b2);
 //       frameObj.add(b3);
 //        frameObj.add(b4);
 //       frameObj.add(b5);
@@ -53,6 +55,17 @@ public class FlowLayoutExample
         FlowLayout flowLayout = new FlowLayout();
         flowLayout.setAlignment(FlowLayout.RIGHT);
         frameObj.setLayout(flowLayout);
+
+        b1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("Click B1");
+                frameObj.remove(b2[0]);
+                //IMPORTANT
+                frameObj.revalidate();
+                frameObj.repaint();
+            }
+        });
 
 
         frameObj.setVisible(true);

@@ -10,8 +10,5 @@
         <module name="CodeTest" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="CodeTest" target="1.8" />
-    </bytecodeTargetLevel>
   </component>
 </project>

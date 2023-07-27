@@ -1,22 +1,23 @@
 package com.mfrdev.test;
 
+import com.mfrdev.test.comress.FileCompress;
 import com.mfrdev.test.enumUtils.DeviceType;
 import com.mfrdev.test.factor.Factor;
 import com.mfrdev.test.model.DDL;
 import com.mfrdev.test.model.DeviceTokenBean;
 import com.mfrdev.test.regularExpression.Rx;
+import com.mfrdev.test.time.TimeUtils;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
-import com.mfrdev.test.time.TimeUtils;
 
+import java.io.File;
+import java.io.IOException;
 import java.lang.reflect.Field;
 import java.time.LocalDate;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
-
-import static com.mfrdev.test.regularExpression.Rx.*;
 
 public class Main {
     static ModelMapper modelMapper;
@@ -97,8 +98,37 @@ public class Main {
         System.out.println(DeviceType.WEB);
 
 
+        System.out.println(checkEmail("md@gmail.com"));
+
+        System.out.println("====================================================");
+        System.out.println();
+
+String inputFilePath = "C:\\Users\\User\\FingerprintApplication\\RIGHT_HAND\\FINAL\\fp_right_hand.bmp";
+        try {
+            FileCompress.imageCompress(new File(inputFilePath));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
 
+        System.out.println();
+
+
+    }
+
+    public static final String EMAIL_REGEX = "^[a-zA-Z0-9_+&*-]+(?:\\." +
+            "[a-zA-Z0-9_+&*-]+)*@" +
+            "(?:[a-zA-Z0-9-]+\\.)+[a-z" +
+            "A-Z]{2,7}$";
+
+    private static boolean checkEmail(String emailAddresses){
+        String[] emails = emailAddresses.split(",");
+        for (String email : emails) {
+            if(!email.matches(EMAIL_REGEX)){
+                return false;
+            }
+        }
+        return true;
     }
 
     private static String getServiceFormScriptInfoData(String data) {
