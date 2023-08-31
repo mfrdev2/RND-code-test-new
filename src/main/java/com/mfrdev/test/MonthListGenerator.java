@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 public class MonthListGenerator {
     public static void main(String[] args) {
@@ -24,7 +25,18 @@ public class MonthListGenerator {
 
         System.out.println(monthList);
         System.out.println(monthList.size());
+        System.out.println(isNumeric("21"));
     }
+
+    private final static Pattern pattern = Pattern.compile("-?\\d+");
+
+    public static boolean isNumeric(String strNum) {
+        if (strNum == null) {
+            return false;
+        }
+        return pattern.matcher(strNum).matches();
+    }
+
 
     public static LocalDate getLastDayOfMonth(LocalDate localDate){
         return localDate.withDayOfMonth(
@@ -40,7 +52,7 @@ public class MonthListGenerator {
 
         while (!startDate.isAfter(endDate)) {
             String format = startDate.format(DateTimeFormatter.ofPattern("MMMM-yyyy"));
-            monthList.put(format, 00D);
+            monthList.put(format, 0D);
             startDate = startDate.plusMonths(1);
         }
 
