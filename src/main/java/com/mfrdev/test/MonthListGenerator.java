@@ -26,9 +26,13 @@ public class MonthListGenerator {
         System.out.println(monthList);
         System.out.println(monthList.size());
         System.out.println(isNumeric("21"));
+
+
     }
 
     private final static Pattern pattern = Pattern.compile("-?\\d+");
+
+
 
     public static boolean isNumeric(String strNum) {
         if (strNum == null) {
