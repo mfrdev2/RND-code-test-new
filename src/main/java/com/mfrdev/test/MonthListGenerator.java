@@ -1,16 +1,18 @@
 package com.mfrdev.test;
 
-import java.time.LocalDate;
+import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Random;
 import java.util.regex.Pattern;
 
 public class MonthListGenerator {
-   static String mainQuery = "SELECT p " +
+    static String mainQuery = "SELECT p " +
             "FROM Payslip p " +
             "INNER JOIN ErpUserContract c ON p.contractId = c.contractId " +
             "WHERE p.paymentStatus IN ('','paid','partial_payment','due') ";
+
     public static void main(String[] args) {
         String startDateString = "2018-01-20";
         String endDateString = "2018-02-01";
@@ -32,17 +34,32 @@ public class MonthListGenerator {
         System.out.println(isNumeric("21"));
 
 
-
         Map<String, String> requestBody = getRequestBody();
         Map<String, String> queryBody = getQueryBody();
 
 
         String query = getQuery(requestBody);
         System.out.println(query);
+        System.out.println(Math.abs(-25.52));
 
+        Random ran = new Random();
+        int x = ran.nextInt(21);
+        System.out.println(".....");
+
+        LocalDate now = LocalDate.now();
+        System.out.println(now);
+
+        Instant instant = localDateToInstant(now);
+        System.out.println(instant);
     }
 
-    private static String getQuery(Map<String, String> requestBody ) {
+    public static Instant localDateToInstant(LocalDate localDate) {
+        LocalDateTime localDateTime1 = localDate.atStartOfDay();
+        System.out.println("localDateTime:: " + localDateTime1);
+        return localDateTime1.toInstant(ZoneOffset.UTC);
+    }
+
+    private static String getQuery(Map<String, String> requestBody) {
         StringBuilder stringBuilder = new StringBuilder(mainQuery);
         for (Map.Entry<String, String> entry : requestBody.entrySet()) {
             String key = entry.getKey();
