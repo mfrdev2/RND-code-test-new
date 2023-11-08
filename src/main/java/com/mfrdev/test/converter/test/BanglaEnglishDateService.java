@@ -7,12 +7,18 @@ import com.mfrdev.test.converter.EnglishMonth;
 
 public class BanglaEnglishDateService {
 	public static void main(String[] args) {
-		Date<BanglaMonth> banglaDate = BanglaDateUtils.getBanglaDate(2022, 2, 4);
-		System.out.println(banglaDate);
-		BanglaMonth month = banglaDate.getMonth();
-		System.out.println(month.getBanglaName());
+		for (int i = 1; i <=12 ; i++) {
+			Date<BanglaMonth> banglaDate = BanglaDateUtils.getBanglaDate(2022, i, 20);
+			System.out.println(banglaDate);
+			BanglaMonth month = banglaDate.getMonth();
+			System.out.println(month.getBanglaName()+"["+i+"]");
 
-		Date<EnglishMonth> englishDate = BanglaDateUtils.getEnglishDate(1428, 10, 21);
+			System.out.println();
+
+		}
+
+
+		Date<EnglishMonth> englishDate = BanglaDateUtils.getEnglishDate(1430, 12, 30);
 		System.out.println(englishDate);
 	}
 }
