@@ -1,11 +1,6 @@
 package com.mfrdev.test.converter;
 
-/**
- * Date class is designed to hold the converted value of Bengali and English date 
- * @author sharif
- *
- * @param <T>
- */
+
 public class Date<T>{
 	
 	private int day;	

@@ -1,10 +1,6 @@
 package com.mfrdev.test.converter;
 
-/**
- * Then ENUM represent 12 English months (JANUARY to DECEMBER)
- * @author sharif
- *
- */
+
 public enum EnglishMonth {
 	JANUARY, 
 	FEBRUARY, 

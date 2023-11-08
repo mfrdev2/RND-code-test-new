@@ -104,7 +104,7 @@ public class BanglaDateUtils {
 				&& (month == 2 && day < 15)) {
 			banglaDay = ENGLISH_TO_BANGLA_DATE.get(key).getDay() + 1;
 		} else {
-			banglaDay = ENGLISH_TO_BANGLA_DATE.get(key).getDay();
+			banglaDay = ENGLISH_TO_BANGLA_DATE.get(key).getDay()-1;
 		}
 
 
@@ -145,7 +145,7 @@ public class BanglaDateUtils {
 		// Create key based of the provided Bengali date
 		String key = banglaMonth + "/" + banglaDay;
 		
-		englishDay = BANGLA_TO_ENGLISH_DATE.get(key).getDay();
+		englishDay = BANGLA_TO_ENGLISH_DATE.get(key).getDay()+1;
 		englishMonth = BANGLA_TO_ENGLISH_DATE.get(key).getMonth();		
 		
 		/* Get Day from Map. If the date is between March 1 and March 14 then 
@@ -167,8 +167,9 @@ public class BanglaDateUtils {
 	 * @param year
 	 * @return
 	 */
-	public static boolean isLeapYear(int year) {
-		return (year % 400 == 0) || ((year % 4 == 0) && (year % 100 != 0));
+
+	public static boolean isLeapYear(long year) {
+		return ((year & 3) == 0) && ((year % 100) != 0 || (year % 400) == 0);
 	}
 
 }

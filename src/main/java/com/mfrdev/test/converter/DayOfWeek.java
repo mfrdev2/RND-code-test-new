@@ -1,10 +1,6 @@
 package com.mfrdev.test.converter;
 
-/**
- * Then ENUM represent seven days of week (SUNDAY[রবিবার] to SATURDAY[শনিবার])
- * @author sharif
- *
- */
+
 public enum DayOfWeek {
 	SUNDAY("রবিবার"),
 	MONDAY("সোমবার"),
